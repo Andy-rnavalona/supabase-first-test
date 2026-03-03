@@ -10,7 +10,7 @@ Base PostgreSQL avec Row-Level Security (RLS)
 
 Gestion des rôles agent et client via la table profiles
 
-Frontend : Next.js / React
+Frontend : Next.js
 
 Page login (/login)
 
@@ -26,7 +26,7 @@ Login → redirection selon rôle
 
 Client : accède à tous les biens publiés
 
-Agent : accède à ses biens (y compris drafts), peut créer/éditer ses biens
+Agent : accède à ses biens (y compris drafts)
 
 Script Python : accès aux données via Service Role Key pour calculs statistiques
 
