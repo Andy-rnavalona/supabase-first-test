@@ -52,7 +52,7 @@ export default function MyPropertiesPage() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20 }} className="text-black">
       <h1>My Properties</h1>
 
       {properties.length === 0 && <p>No properties found</p>}
