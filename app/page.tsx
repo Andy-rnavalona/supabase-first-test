@@ -39,7 +39,7 @@ export default function HomePage() {
   if (loading) return <p>Loading properties...</p>;
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20 }} className="text-black">
       <h1>Published Properties</h1>
 
       {properties.length === 0 && <p>No properties available</p>}

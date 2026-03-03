@@ -32,7 +32,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "80px auto" }}>
+    <div style={{ maxWidth: 400, margin: "80px auto" }} className="text-black">
       <h1>Login</h1>
 
       <form onSubmit={handleLogin}>
@@ -44,6 +44,7 @@ export default function LoginPage() {
             required
             onChange={(e) => setEmail(e.target.value)}
             style={{ width: "100%", padding: 8 }}
+            className="border"
           />
         </div>
 
@@ -55,6 +56,7 @@ export default function LoginPage() {
             required
             onChange={(e) => setPassword(e.target.value)}
             style={{ width: "100%", padding: 8 }}
+            className="border"
           />
         </div>
 
@@ -62,6 +64,7 @@ export default function LoginPage() {
           type="submit"
           disabled={loading}
           style={{ width: "100%", padding: 10 }}
+          className="bg-black text-white"
         >
           {loading ? "Loading..." : "Login"}
         </button>
