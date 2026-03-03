@@ -1,6 +1,6 @@
 Plateforme Immobilière – Test Technique
 
-### 1️ - Architecture
+1️ - Architecture
 
 Backend-first avec Supabase
 
@@ -30,7 +30,7 @@ Agent : accède à ses biens (y compris drafts), peut créer/éditer ses biens
 
 Script Python : accès aux données via Service Role Key pour calculs statistiques
 
-### 2 - Modèle de données
+2 - Modèle de données
 
 profiles :
 
@@ -54,9 +54,9 @@ properties :
 | is_published | boolean   | publié ou draft     |
 | created_at   | timestamp | date de création    |
 
-### 3 - RLS (Row-Level Security)
+3 - RLS (Row-Level Security)
 
-`##`• À un agent :
+• À un agent :
 1- créer ses biens :
 `CREATE policy "Agents can insert own properties"
         on properties
@@ -69,7 +69,7 @@ properties :
                     )
                 );`
 2- modifier ses biens :
-`create policy "Agents can update own properties"
+`CREATE policy "Agents can update own properties"
         on properties
             for update
                USING (
@@ -79,28 +79,28 @@ properties :
                         WHERE id = auth.uid() AND role = 'agent'
                     )
                 )`
-`##`• À un client :
+• À un client :
 1 - lire uniquement les biens publiés :
 
-`#` `create policy "Anyone can read published properties"
+`CREATE policy "Anyone can read published properties"
         on properties
             for select
                 using (is_published = true OR auth.uid() = agent_id);`
 
-`#` • À chaque utilisateur :
+• À chaque utilisateur :
 2 - accéder uniquement à son profil
 
-` create policy "Users can read own profile"
+` CREATE policy "Users can read own profile"
     on profiles
         for select
         using (auth.uid() = id)`;
 
-`create policy "Users can update own profile"
+`CREATE policy "Users can update own profile"
     on profiles
         for update
             using (auth.uid() = id);`
 
-### 4️ - Script Python
+4️ - Script Python (Option C)
 
 Fichier : script/stats.py
 
@@ -117,7 +117,7 @@ Variables d’environnement (.env) :
 SUPABASE_URL=https://xxxx.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=xxxxxxxxxxxxxxxxxxxx
 
-### 5 - Améliorations possibles
+5 - Améliorations possibles
 
 Pagination et recherche dans la liste des biens
 
@@ -133,7 +133,7 @@ Ajouter dashboards analytiques pour les administrateurs
 
 ---
 
-### Raisonnement technique
+Raisonnement technique
 
 1️- Pourquoi Supabase est adapté ?
 
